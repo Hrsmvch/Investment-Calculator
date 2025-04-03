@@ -12,7 +12,7 @@ type InvestmentData = z.infer<typeof investmentSchema>;
 
 export default function InvestmentForm({
   handleSetResult,
-  handleSetInitialInvestment
+  handleSetInitialInvestment,
 }: InvestmentFormProps) {
   const {
     register,
@@ -29,52 +29,100 @@ export default function InvestmentForm({
   };
 
   return (
-    <>
+    <div className={styles.calculator_container}>
+      <h1>Investment Calculator</h1>
+      <p>
+        Calculate your future investment based on current rates, compounding
+        frequency, and investment amount.
+      </p>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <label>
-          Initial Investment:
-          <input
-            type="number"
-            {...register("initialInvestment", { valueAsNumber: true })}
-          />
-          {errors.initialInvestment && (
-            <span>{errors.initialInvestment.message}</span>
-          )}
-        </label>
+        <div className={styles.group}>
+          <label className={styles.withSymbol}>
+            <span className={styles.label_value}>Initial Investment:</span>
+            <input
+              type="number"
+              placeholder="10 000"
+              min={1}
+              inputMode="numeric"
+              onInput={(e) => {
+                let value = e.currentTarget.value;
+                value = value.replace(/[^0-9]/g, "");
+                value = value.replace(/^0+/, ""); // Remove leading zeros
+                e.currentTarget.value = value;
+              }}
+              className={errors.initialInvestment ? styles.error : ""}
+              {...register("initialInvestment", { valueAsNumber: true })}
+            />
+            {/* {errors.initialInvestment && (
+              <span>{errors.initialInvestment.message}</span>
+            )} */}
+          </label>
 
-        <label>
-          Annual Investment:
-          <input
-            type="number"
-            {...register("annualInvestment", { valueAsNumber: true })}
-          />
-          {errors.annualInvestment && (
-            <span>{errors.annualInvestment.message}</span>
-          )}
-        </label>
+          <label className={styles.withSymbol}>
+            <span className={styles.label_value}>Annual Investment:</span>
+            <input
+              type="number"
+              placeholder="1 200"
+              min={1}
+              inputMode="numeric"
+              onInput={(e) => {
+                let value = e.currentTarget.value;
+                value = value.replace(/[^0-9]/g, "");
+                value = value.replace(/^0+/, ""); // Remove leading zeros
+                e.currentTarget.value = value;
+              }}
+              className={errors.annualInvestment ? styles.error : ""}
+              {...register("annualInvestment", { valueAsNumber: true })}
+            />
+            {/* {errors.annualInvestment && (
+              <span>{errors.annualInvestment.message}</span>
+            )} */}
+          </label>
+        </div>
+        <div className={styles.group}>
+          <label>
+            <span className={styles.label_value}>Expected Return (%):</span>
+            <input
+              type="number"
+              placeholder="4"
+              min={1}
+              inputMode="numeric"
+              onInput={(e) => {
+                let value = e.currentTarget.value;
+                value = value.replace(/[^0-9]/g, "");
+                value = value.replace(/^0+/, ""); // Remove leading zeros
+                e.currentTarget.value = value;
+              }}
+              className={errors.expectedReturn ? styles.error : ""}
+              {...register("expectedReturn", { valueAsNumber: true })}
+            />
+            {/* {errors.expectedReturn && (
+              <span>{errors.expectedReturn.message}</span>
+            )} */}
+          </label>
 
-        <label>
-          Expected Return (%):
-          <input
-            type="number"
-            {...register("expectedReturn", { valueAsNumber: true })}
-          />
-          {errors.expectedReturn && (
-            <span>{errors.expectedReturn.message}</span>
-          )}
-        </label>
+          <label>
+            <span className={styles.label_value}>Duration (Years):</span>
 
-        <label>
-          Duration (Years):
-          <input
-            type="number"
-            {...register("duration", { valueAsNumber: true })}
-          />
-          {errors.duration && <span>{errors.duration.message}</span>}
-        </label>
-
+            <input
+              type="number"
+              placeholder="12"
+              min={1}
+              inputMode="numeric"
+              onInput={(e) => {
+                let value = e.currentTarget.value;
+                value = value.replace(/[^0-9]/g, "");
+                value = value.replace(/^0+/, ""); // Remove leading zeros
+                e.currentTarget.value = value;
+              }}
+              className={errors.duration ? styles.error : ""}
+              {...register("duration", { valueAsNumber: true })}
+            />
+            {/* {errors.duration && <span>{errors.duration.message}</span>} */}
+          </label>
+        </div>
         <button type="submit">Calculate</button>
       </form>
-    </>
+    </div>
   );
 }
