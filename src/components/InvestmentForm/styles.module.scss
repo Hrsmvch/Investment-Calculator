@@ -115,8 +115,9 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
       color: #fdfaf6;
+      border: none;
       transition: background 0.3s ease, transform 0.2s ease,
-        box-shadow 0.3s ease;
+      box-shadow 0.3s ease;
       cursor: pointer;
 
       &:hover {
