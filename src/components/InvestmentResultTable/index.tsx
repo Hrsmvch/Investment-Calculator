@@ -1,7 +1,7 @@
 import React from "react";
 import { InvestmentResultTableProps } from "@/types/investment";
 import { formatCurrency } from "@/utils/formatCurrency";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export default function InvestmentResultTable({
   results,
@@ -10,9 +10,9 @@ export default function InvestmentResultTable({
   if (!results?.length) return;
 
   return (
-    <div>
+    <div className={styles.results_container}>
       <h2>Investment Results</h2>
-      <table className={styles.results_table}> 
+      <table className={styles.results_table}>
         <thead>
           <tr>
             <th>Year</th>
@@ -32,11 +32,11 @@ export default function InvestmentResultTable({
 
             return (
               <tr key={result.year}>
-                <td>{result.year}</td>
-                <td>{formatCurrency(totalAmountInvestment)}</td>
-                <td>{formatCurrency(result.interest)}</td>
-                <td>{formatCurrency(totalInterest)}</td>
-                <td>{formatCurrency(result.valueEndOfYear)}</td>
+                <td data-label="Year">{new Date().getFullYear() + result.year}</td>
+                <td data-label="Invested Capital">{formatCurrency(totalAmountInvestment)}</td>
+                <td data-label="Yearly Earnings">{formatCurrency(result.interest)}</td>
+                <td data-label="Total Profit">{formatCurrency(totalInterest)}</td>
+                <td data-label="Total Balance">{formatCurrency(result.valueEndOfYear)}</td>
               </tr>
             );
           })}
