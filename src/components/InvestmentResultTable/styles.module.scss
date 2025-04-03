@@ -1,0 +1,14 @@
+.results_table {
+  border-collapse: collapse;
+
+  thead th,
+  tfoot th {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+  }
+}

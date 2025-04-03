@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -12,18 +11,13 @@ body {
 }
 
 body {
-  background: #FDFAF6;
+  background: #fdfaf6;
   color: #333333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 20px 16px;
-}
-
-header{
-  margin-bottom: 25px;
-}
-
-main{
+  padding: 16px;
   display: flex;
-  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
