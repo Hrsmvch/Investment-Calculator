@@ -71,13 +71,13 @@ Open http://localhost:3000 to view the project in your browser.
 
 The project structure is organized as follows:
 
-- app: Contains the pages of your Next.js application.
-- components: Contains React components used on main page (e.g., InvestmentForm, InvestmentResultTable). 
-- public: Contains static assets like images, fonts, and other files.
+- app: Contains the home page and layout of Next.js application.
+- components: Contains components used on main page (e.g., InvestmentForm, InvestmentResultTable). 
+- public: Contains static assets like images and other files.
 - utils: Contains utility functions, such as for calculating investment results and formatting currency.
 - schemas: Contains the Zod schema for validating investment data.
 - types: Contains the types of inputs and outputs
-- tests: Contains tests for your application.
+- tests: Contains tests for the application.
 
 ## Technologies Used
 
@@ -88,6 +88,7 @@ The project structure is organized as follows:
 - SASS for styling.
 - CSS Modules for component-specific styling.
 - Intl API for formatting currency.
+- Jest for unit testing and ensuring code quality.
 
 ## Deployment
 
