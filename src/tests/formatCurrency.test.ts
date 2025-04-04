@@ -16,3 +16,5 @@ describe("formatCurrency", () => {
     expect(formatCurrency(1234.567)).toBe("$1,235");
   });
 });
+
+

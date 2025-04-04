@@ -1,4 +1,4 @@
-
+// Represents the data required for investment calculations
 export interface InvestmentData {
   initialInvestment: number;
   annualInvestment: number;
@@ -6,20 +6,22 @@ export interface InvestmentData {
   duration: number;
 }
 
+// Represents the data for a single year of an investment
 export interface InvestmentYearData {
-  year: number;
-  interest: number;
-  valueEndOfYear: number;
-  annualInvestment: number;
+  readonly year: number;
+  readonly interest: number;
+  readonly valueEndOfYear: number;
+  readonly annualInvestment: number;
 }
 
+// Props for the `InvestmentForm` component.
 export interface InvestmentFormProps {
   handleSetResult: (results: InvestmentYearData[]) => void;
   handleSetInitialInvestment: (value: number) => void;
 };
 
-
+// Props for the `InvestmentResultTable` component.
 export interface InvestmentResultTableProps {
-  results: InvestmentYearData[]; 
-  initialInvestment: number;
+  readonly results: InvestmentYearData[]; 
+  readonly initialInvestment: number;
 };
